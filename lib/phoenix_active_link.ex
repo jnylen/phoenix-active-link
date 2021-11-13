@@ -147,6 +147,7 @@ defmodule PhoenixActiveLink do
       case conn.private do
         %{phoenix_controller: module, phoenix_action: action} -> {module, action}
         %{phoenix_live_view: {module, opts}} -> {module, Keyword.get(opts, :action)}
+        %Phoenix.LiveView.Socket{view: module} -> {module, nil}
         %{} -> {nil, nil}
       end
 
